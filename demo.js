@@ -34,7 +34,7 @@ app.get("/api/users/:id/", (req, res) => {
 }) 
 
 //validate
-function validateInput(req, res) {
+function validateInput(req, res, next) {
   const newUser = req.body;
 
   if (!newUser.age || !newUser.name) {
