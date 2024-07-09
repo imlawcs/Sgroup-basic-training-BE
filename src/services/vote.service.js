@@ -51,7 +51,7 @@ const submit = async(userId, optionId) => {
 }
 
 const resultPoll = async() => {
-    const query = 'SELECT * FROM polls p LEFT JOIN users u ON u.id = p.userId LEFT JOIN options o ON o.pollId = p.id LEFT JOIN user_option uo ON uo.userId = u.id AND uo.optionId = o.id';
+    const query = 'SELECT u.id as idUserCreate, o.title as option_title, p.title as poll_title, uo.userId as idUserSubmit FROM polls p LEFT JOIN options o ON o.pollId = p.id LEFT JOIN users u ON u.id = p.userId LEFT JOIN user_option uo ON uo.userId = p.userId AND uo.optionId = o.id;';
     const result = await db.query(query);
     if (result[0].length === 0) {
         return 'Invalid result';
