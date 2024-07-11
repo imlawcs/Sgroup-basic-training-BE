@@ -29,7 +29,6 @@ const authorization = async(req, res, next) => {
         return res.status(500).send('You do not have access');
     }
     next();
-    // return res.status(200).send('You have access');
 }
 
 module.exports = {
