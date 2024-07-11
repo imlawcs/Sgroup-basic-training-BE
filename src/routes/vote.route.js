@@ -5,6 +5,7 @@ const voteControllers = require('../controllers/vote.controller.js');
 vote.post("/create-poll", voteControllers.createPoll);
 vote.post("/create-option", voteControllers.createOption);
 vote.post("/submit", voteControllers.submit);
+vote.post("/unsubmit", voteControllers.unsubmit);
 vote.get("/result-poll", voteControllers.resultPoll);
 // router.post("/create-vote", voteControllers.createVote);
 // router.get("/change-vote", authenticateToken, voteControllers.changeVote);

@@ -36,6 +36,17 @@ const submit = async (req, res) => {
     }
 }
 
+const unsubmit = async (req, res) => {
+    const submit = req.body;
+    try {
+        const submits = await voteServices.unsubmit(submit.userId, submit.optionId);
+        res.status(200).json(submits);
+    }
+    catch (err) {
+        res.status(500).send(err);
+    }
+}
+
 const resultPoll = async(req, res) => {
     try {
         const result = await voteServices.resultPoll();
@@ -51,5 +62,6 @@ module.exports = {
     createPoll,
     createOption,
     submit,
+    unsubmit,
     resultPoll
 }

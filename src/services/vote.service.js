@@ -61,6 +61,23 @@ const submit = async(userId, optionId) => {
     }
 }
 
+const unsubmit = async(userId, optionId) => {
+    const isValidPoll = 'SELECT * FROM options WHERE id = ?';
+    const result = await db.query(isValidPoll, [optionId]);
+    const isValidUser = 'SELECT * FROM users WHERE id = ?';
+    const results = await db.query(isValidUser, [userId]);
+    if (result[0].length === 0 || results[0].length === 0) {
+        return 'Invalid';
+    }
+    else {
+        const query = 'DELETE FROM user_option WHERE userId = ? AND optionId = ?';
+        const createStatus = await db.query(query, [userId, optionId]);
+        if(createStatus) 
+            return 'delete user option success';
+        else return 'delete user option fail';
+    }
+}
+
 const resultPoll = async() => {
     const query = 'SELECT u.id as idUserCreate, o.title as option_title, p.title as poll_title, uo.userId as idUserSubmit FROM polls p LEFT JOIN options o ON o.pollId = p.id LEFT JOIN users u ON u.id = p.userId LEFT JOIN user_option uo ON uo.userId = p.userId AND uo.optionId = o.id;';
     const result = await db.query(query);
@@ -76,5 +93,6 @@ module.exports = {
     createPoll, 
     createOption,
     submit,
+    unsubmit,
     resultPoll
 }
