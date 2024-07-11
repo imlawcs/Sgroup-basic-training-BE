@@ -3,6 +3,17 @@ require('dotenv').config();
 const jwtSecret = process.env.JWT_SECRET;
 var jwt = require('jsonwebtoken');
 
+const currentDate = new Date();
+
+const day = String(currentDate.getDate()).padStart(2, '0');
+const month = String(currentDate.getMonth() + 1).padStart(2, '0'); 
+const year = currentDate.getFullYear();
+
+const formattedDate = `${year}-${month}-${day}`;
+
+console.log(formattedDate); 
+
+
 const createPoll = async(title, userId) => {
     const isValidUser = 'SELECT * FROM users WHERE id = ?';
     const results = await db.query(isValidUser, [userId]);
@@ -11,7 +22,7 @@ const createPoll = async(title, userId) => {
     }
     else {
         const query = 'INSERT INTO polls (title, CreateDate, userId, isLock) VALUES (?, ?, ?, ?)';
-        const createStatus = await db.query(query, [title, '09/07/2024', userId, 0]);
+        const createStatus = await db.query(query, [title, formattedDate, userId, 0]);
         if(createStatus) 
             return 'create poll success';
         else return 'create poll fail';
@@ -26,7 +37,7 @@ const createOption = async(title, pollId) => {
     }
     else {
         const query = 'INSERT INTO options (title, CreateDate, pollId) VALUES (?, ?, ?)';
-        const createStatus = await db.query(query, [title, '09-07-2024', pollId]);
+        const createStatus = await db.query(query, [title, formattedDate, pollId]);
         if(createStatus) 
             return 'create option success';
         else return 'create option fail';
