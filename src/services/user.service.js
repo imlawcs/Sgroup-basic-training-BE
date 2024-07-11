@@ -10,12 +10,12 @@ const mailService = require("../middlewares/mailService.js");
 const register = async (user) => {
     // Hash the password
     try {
-        if(user.username === '' || user.password === '') return 'No Empty';
+        if(user.username === '' || user.password === '' || user.email === '') return 'No Empty';
         const hashedPassword = await bcrypt.hash(user.password, 10);
         // Insert the user into the database
         user.password = hashedPassword;
-        const query = 'INSERT INTO users (username, password) VALUES (?, ?)';
-        await db.query(query, [user.username, hashedPassword]);
+        const query = 'INSERT INTO users (username, password, email, fullname, role) VALUES (?, ?, ?, ?, ?)';
+        await db.query(query, [user.username, hashedPassword, user.email, user.fullname, user.role]);
         return user;
     } catch (err) {
         console.error('Error hashing password:', err);
@@ -26,7 +26,7 @@ const register = async (user) => {
 const login = async (user) => {
     try {
         // Retrieve the user from the database
-        if(user.username === '' || user.password === '') return 'No Empty';
+        if(user.username === '' || user.password === '' || user.email === '') return 'No Empty';
         const query = 'SELECT * FROM users WHERE username = ?';
         const results = await db.query(query, [user.username])
         if (results[0].length === 0) {

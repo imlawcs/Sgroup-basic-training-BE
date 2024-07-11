@@ -5,19 +5,20 @@ require('dotenv').config();
 const jwtSecret = process.env.JWT_SECRET;
 
 const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
+    try{
+        const authHeader = req.headers['authorization'];
 
-    const token = authHeader && authHeader.split(' ')[1];
-    console.log(token);
-    
-    if (token == null) return res.sendStatus(401); // Nếu không có token
-    console.log(jwtSecret);
-    const decode = jwt.verify(token, jwtSecret);
-    console.log(decode);
-    if(!decode) {
-        return res.sendStatus(403);
+        const token = authHeader && authHeader.split(' ')[1];
+        if (token == null) return res.sendStatus(401);
+        const decode = jwt.verify(token, jwtSecret);
+        if(!decode) {
+            return res.sendStatus(403);
+        }
+        next();
     }
-    next();
+    catch(err){
+        res.status(400).send('Token is invalid');
+    }   
 };
 
 const authorization = async(req, res, next) => {
