@@ -9,8 +9,8 @@ const db = mysql.createConnection({
 }).promise();
 
 db.connect()
-  .then(() => console.log('Success'))
-  .catch(e => console.log('Failed', e));
+  .then(() => console.log('Connected to database'))
+  .catch(e => console.log('Connect to database failed', e));
   
 module.exports = db;
 

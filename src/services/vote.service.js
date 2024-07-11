@@ -11,9 +11,6 @@ const year = currentDate.getFullYear();
 
 const formattedDate = `${year}-${month}-${day}`;
 
-console.log(formattedDate); 
-
-
 const createPoll = async(title, userId) => {
     const isValidUser = 'SELECT * FROM users WHERE id = ?';
     const results = await db.query(isValidUser, [userId]);

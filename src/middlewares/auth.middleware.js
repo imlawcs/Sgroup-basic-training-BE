@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
+const db = require('../database/connection');
 require('dotenv').config();
 
 const jwtSecret = process.env.JWT_SECRET;
 
-// Middleware xác thực JWT token
 const authenticateToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
 
@@ -20,8 +20,18 @@ const authenticateToken = (req, res, next) => {
     next();
 };
 
-// const authorization = (req, res, next) => {
+const authorization = async(req, res, next) => {
+    const authorize = req.body;
+    const query = "SELECT * FROM users WHERE id = ? AND role = ?";
+    const autho = await db.query(query, [authorize.userId, 'admin']);
+    if (autho[0].length === 0) {
+        return res.status(500).send('You do not have access');
+    }
+    next();
+    // return res.status(200).send('You have access');
+}
 
-// }
-
-module.exports = authenticateToken;
+module.exports = {
+    authenticateToken,
+    authorization
+};
