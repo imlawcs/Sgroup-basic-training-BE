@@ -20,4 +20,8 @@ const authenticateToken = (req, res, next) => {
     next();
 };
 
+// const authorization = (req, res, next) => {
+
+// }
+
 module.exports = authenticateToken;

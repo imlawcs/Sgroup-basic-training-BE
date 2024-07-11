@@ -14,6 +14,17 @@ const createPoll = async (req, res) => {
     }
 }
 
+const updatePoll = async (req, res) => {
+    const poll = req.body;
+    try {
+        const polls = await voteServices.updatePoll(poll.title, poll.userId, poll.isLock, poll.pollId);
+        res.status(200).json(polls);
+    }
+    catch (err) {
+        res.status(500).send(err);
+    }
+}
+
 const createOption = async (req, res) => {
     const option = req.body;
     try {
@@ -61,6 +72,7 @@ const resultPoll = async(req, res) => {
 module.exports = {
     createPoll,
     createOption,
+    updatePoll,
     submit,
     unsubmit,
     resultPoll

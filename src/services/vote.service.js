@@ -29,6 +29,21 @@ const createPoll = async(title, userId) => {
     }
 }
 
+const updatePoll = async(title, userId, isLock, pollId) => {
+    const isValidUser = 'SELECT * FROM polls WHERE userId = ? AND id = ?';
+    const results = await db.query(isValidUser, [userId, pollId]);
+    if (results[0].length === 0) {
+        return 'Invalid poll';
+    }
+    else {
+        const query = 'UPDATE polls SET title = ?, CreateDate = ?, isLock = ? WHERE id = ?';
+        const createStatus = await db.query(query, [title, formattedDate, isLock, pollId]);
+        if(createStatus)
+            return 'update poll success';
+        else return 'update poll fail';
+    }
+}
+
 const createOption = async(title, pollId) => {
     const isValidPoll = 'SELECT * FROM polls WHERE id = ?';
     const results = await db.query(isValidPoll, [pollId]);
@@ -92,6 +107,7 @@ const resultPoll = async() => {
 module.exports = {
     createPoll, 
     createOption,
+    updatePoll,
     submit,
     unsubmit,
     resultPoll
