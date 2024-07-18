@@ -20,8 +20,8 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     const user = req.body;
     try {
-        const users = await userServices.login(user);
-        res.status(200).json({users});
+        const accessToken = await userServices.login(user);
+        res.status(200).json({accessToken});
     }
     catch (err) {
         res.status(500).send(err);

@@ -25,6 +25,29 @@ const updatePoll = async (req, res) => {
     }
 }
 
+const getPoll = async (req, res) => {
+    try {
+        const polls = await voteServices.getPoll();
+        res.status(200).json(polls);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+}
+
+const deletePoll = async (req, res) => {
+    const {id} = req.params;
+    try {
+        const polls = await voteServices.deletePoll(id);
+        res.status(200).json(polls);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+}
+
 const createOption = async (req, res) => {
     const option = req.body;
     try {
@@ -73,6 +96,8 @@ module.exports = {
     createPoll,
     createOption,
     updatePoll,
+    getPoll,
+    deletePoll,
     submit,
     unsubmit,
     resultPoll

@@ -1,9 +1,7 @@
 const db = require("../database/connection");
 const express = require('express');
-// const bodyParser = require('body-parser');
 const multer = require('multer');
 const app = express();
-// const fs = require('fs');
 const path = require('path');
 
 const uploadfile = async(file) => {
