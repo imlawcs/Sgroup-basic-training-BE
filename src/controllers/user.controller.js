@@ -1,4 +1,4 @@
-const db = require("../database/connection.js");
+// const db = require("../database/connection.js");
 const mailService = require("../middlewares/mailService.js");
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');

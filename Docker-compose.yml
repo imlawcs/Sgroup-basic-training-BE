@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    image: hanhnguyen312/be-crud-vote-users
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    command: node --max_old_space_size=2048 server.js
+    depends_on:
+      - db
+    networks:
+      - my-network
+
+  db:
+    image: mysql:8
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: lacxinhh
+      MYSQL_DATABASE: s_usermnmt
+    ports:
+      - "3307:3306"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
