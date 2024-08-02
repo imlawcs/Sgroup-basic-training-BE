@@ -36,7 +36,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/reactjs-basic:${{ github.sha }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/reactjs-basic:latest
 
   # Job 2: Deploy
   deploy:
