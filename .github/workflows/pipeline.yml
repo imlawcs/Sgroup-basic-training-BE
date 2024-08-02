@@ -63,8 +63,8 @@ jobs:
             # docker pull ${{ secrets.DOCKERHUB_USERNAME }}/reactjs-basic:${{ github.sha }}
 
             # Dừng và gỡ bỏ container hiện tại (nếu có)
-            docker stop reactjs-container || true
-            docker rm reactjs-container || true
+            # docker stop reactjs-container || true
+            # docker rm reactjs-container || true
 
             # Dừng và gỡ bỏ các container hiện tại (nếu có)
             docker-compose down || true
