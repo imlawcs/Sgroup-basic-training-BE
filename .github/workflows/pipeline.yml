@@ -71,6 +71,7 @@ jobs:
 
             # Chạy container mới bằng Docker Compose
             docker-compose up -d
+            docker restart reactjs-container
 
             # Chạy container mới với image đã pull về bên trên
             # docker run -d -p 80:3000 --name reactjs-container ${{ secrets.DOCKERHUB_USERNAME }}/reactjs-basic:${{ github.sha }}
