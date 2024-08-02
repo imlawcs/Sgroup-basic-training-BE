@@ -60,7 +60,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             # Pull image mà được push lên DockerHub bên trên
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/reactjs-basic:${{ github.sha }}
+            # docker pull ${{ secrets.DOCKERHUB_USERNAME }}/reactjs-basic:${{ github.sha }}
 
             # Dừng và gỡ bỏ container hiện tại (nếu có)
             docker stop reactjs-container || true

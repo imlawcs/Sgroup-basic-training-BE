@@ -3,7 +3,7 @@ version: '3.8'
 services:
   app:
     # image: hanhnguyen312/be-crud-vote-users
-    image: ${{ secrets.DOCKERHUB_USERNAME }}/reactjs-basic:${{ github.sha }}
+    image: hanhnguyen312/reactjs-basic
     container_name: reactjs-container
     ports:
       - "3000:3000"
