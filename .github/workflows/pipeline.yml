@@ -66,5 +66,11 @@ jobs:
             docker stop reactjs-container || true
             docker rm reactjs-container || true
 
+            # Dừng và gỡ bỏ các container hiện tại (nếu có)
+            docker-compose down || true
+
+            # Chạy container mới bằng Docker Compose
+            docker-compose up -d
+
             # Chạy container mới với image đã pull về bên trên
-            docker run -d -p 80:3000 --name reactjs-container ${{ secrets.DOCKERHUB_USERNAME }}/reactjs-basic:${{ github.sha }}
+            # docker run -d -p 80:3000 --name reactjs-container ${{ secrets.DOCKERHUB_USERNAME }}/reactjs-basic:${{ github.sha }}

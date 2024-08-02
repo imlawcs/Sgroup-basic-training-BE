@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   app:
-    image: hanhnguyen312/be-crud-vote-users
+    # image: hanhnguyen312/be-crud-vote-users
+    image: ${{ secrets.DOCKERHUB_USERNAME }}/reactjs-basic:${{ github.sha }}
+    container_name: reactjs-container
     ports:
       - "3000:3000"
     env_file:
@@ -14,7 +16,7 @@ services:
       - my-network
 
   db:
-    image: mysql:8
+    image: mysql:8.0
     container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: lacxinhh
