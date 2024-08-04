@@ -44,7 +44,7 @@ const login = async (user) => {
         // res.status(200).send(token);
         return token;
     } catch (error) {
-        console.error(err);
+        console.log(error);
     }
 };
   
