@@ -2,7 +2,7 @@ const db = require("../database/connection");
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 require('dotenv').config();
-const jwtSecret = process.env.JWT_SECRET;
+const jwtSecret = process.env.JWT_SECRET || 'abc';  
 var jwt = require('jsonwebtoken');
 // const { forgotPassword, resetPassword } = require("../controllers/user.controller");
 const mailService = require("../middlewares/mailService.js");
