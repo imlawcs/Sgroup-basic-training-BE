@@ -11,6 +11,11 @@ const register = async (user) => {
     // Hash the password
     try {
         if(user.username === '' || user.password === '' || user.email === '') return 'No Empty';
+        const query0 = 'SELECT * FROM users WHERE username = ?';
+        const results = await db.query(query0, [user.username])
+        if (results[0].length != 0) {
+            return 'Username already exists';
+        }
         const hashedPassword = await bcrypt.hash(user.password, 10);
         // Insert the user into the database
         user.password = hashedPassword;
