@@ -67,4 +67,4 @@ jobs:
 
             # Chạy container mới bằng Docker Compose
             docker-compose up -d
-            docker restart reactjs-container
+            # docker restart reactjs-container

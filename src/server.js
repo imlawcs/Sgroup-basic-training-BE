@@ -3,9 +3,9 @@ const express = require('express');
 require('dotenv').config();
 
 const app = express();
-const router = require('./src/routes/user.router.js');
-const file = require('./src/routes/file.route.js');
-const vote = require('./src/routes/vote.route.js');
+const router = require('./routes/user.router.js');
+const file = require('./routes/file.route.js');
+const vote = require('./routes/vote.route.js');
 const port = 3000;
 
 app.use(express.json());
