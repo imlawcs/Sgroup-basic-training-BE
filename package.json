@@ -16,7 +16,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha",
-    "start": "nodemon server.js",
+    "start": "nodemon build/server.js",
     "build": "babel ./src --out-dir ./build"
   },
   "devDependencies": {
