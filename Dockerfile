@@ -26,8 +26,8 @@ FROM base AS deploy
 WORKDIR /
 COPY --from=build /package*.json ./
 COPY --from=build /node_modules ./node_modules
-COPY --from=build / .
-COPY --from=build /build /build
+# COPY --from=build / .
+COPY --from=build /build ./build
 # Nếu server.js nằm trong thư mục build, sao chép thư mục build
 COPY --from=build /server.js ./server.js
 

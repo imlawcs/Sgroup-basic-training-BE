@@ -27,8 +27,6 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker builder prune --all
-
           docker build -t reactjs-basic .
 
       - name: Push image to Docker Hub
@@ -69,4 +67,3 @@ jobs:
 
             # Chạy container mới bằng Docker Compose
             docker-compose up -d
-            # docker restart reactjs-container
