@@ -10,7 +10,7 @@ on:
 # Định nghĩa các jobs cần thực hiện 
 jobs:
   # Job 1: build và test
-  build_and_test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -40,7 +40,7 @@ jobs:
 
   # Job 2: Deploy
   deploy:
-    needs: build_and_test
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
