@@ -32,4 +32,4 @@ COPY --from=build /build ./build
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm", "build/server.js"]
