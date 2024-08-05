@@ -15,6 +15,7 @@ RUN npm install
 FROM base AS build
 
 WORKDIR /
+COPY /server.js ./
 COPY . .
 COPY --from=dependencies /node_modules ./node_modules
 # tạo ra production
