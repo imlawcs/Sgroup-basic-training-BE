@@ -25,8 +25,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and test
-        # Build và test image được build ra bằng Docker 
+      - name: Build Docker image
         run: |
           docker build -t reactjs-basic .
 
@@ -59,15 +58,12 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Pull image mà được push lên DockerHub bên trên
+            # Pull image
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/reactjs-basic:latest
 
             # Dừng và gỡ bỏ container hiện tại
             docker stop reactjs-container
             docker rm reactjs-container
-
-            # Dừng và gỡ bỏ các container hiện tại
-            # docker-compose down
 
             # Chạy container mới bằng Docker Compose
             docker-compose up -d
