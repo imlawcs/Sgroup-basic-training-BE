@@ -27,9 +27,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build --no-cache -t reactjs-basic .
-
-          # docker build -t reactjs-basic .
+          docker build -t reactjs-basic .
 
       - name: Push image to Docker Hub
         uses: docker/build-push-action@v3
