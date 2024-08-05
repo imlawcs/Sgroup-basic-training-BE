@@ -27,6 +27,8 @@ jobs:
 
       - name: Build Docker image
         run: |
+          docker builder prune --all
+
           docker build -t reactjs-basic .
 
       - name: Push image to Docker Hub
