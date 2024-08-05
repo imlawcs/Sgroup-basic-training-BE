@@ -26,8 +26,8 @@ FROM base AS deploy
 WORKDIR /
 COPY --from=build /package*.json ./
 COPY --from=build /node_modules ./node_modules
-COPY --from=build /dist ./dist
+COPY --from=build /build ./build
 
 EXPOSE 3000
 
-CMD ["npm", "start", "test"]
+CMD ["npm", "start"]
