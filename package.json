@@ -18,7 +18,7 @@
   "scripts": {
     "test": "mocha",
     "start": "nodemon server.js",
-    "build": "babel ./src --out-dir ./build"
+    "build": "babel ./src --out-dir ./src"
   },
   "devDependencies": {
     "@babel/cli": "^7.20.0",
