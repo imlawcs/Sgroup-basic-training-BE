@@ -16,7 +16,6 @@ FROM base AS build
 
 WORKDIR /
 COPY . .
-COPY /server.js ./server.js
 COPY --from=dependencies /node_modules ./node_modules
 # tạo ra production
 RUN npm run build
@@ -28,8 +27,6 @@ WORKDIR /
 COPY --from=build /package*.json ./
 COPY --from=build /node_modules ./node_modules
 COPY --from=build / .
-COPY --from=build /server.js ./server.js
-
 
 EXPOSE 3000
 
