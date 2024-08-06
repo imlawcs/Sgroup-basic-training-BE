@@ -17,7 +17,7 @@ FROM base AS build
 WORKDIR /
 COPY . .
 COPY --from=dependencies /node_modules ./node_modules
-# tạo ra production
+
 RUN npm run build
 
 # stage deploy
@@ -30,6 +30,7 @@ COPY --from=build /node_modules ./node_modules
 COPY --from=build /src ./src
 COPY --from=build /server.js ./server.js
 
+# Mở cổng 3000 để ứng dụng chạy
 EXPOSE 3000
 
 CMD ["npm", "start"]
