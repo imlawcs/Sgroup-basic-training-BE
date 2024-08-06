@@ -63,7 +63,7 @@ jobs:
             docker rm reactjs-container
 
             # Pull image
-            docker rm ${{ secrets.DOCKERHUB_USERNAME }}/reactjs-basic:latest
+            docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/reactjs-basic:latest
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/reactjs-basic:latest
 
             # Chạy container mới bằng Docker Compose
