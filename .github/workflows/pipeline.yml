@@ -1,15 +1,15 @@
 name: Docker CI/CD Pipeline
 
-# Xác định sự kiện trigger cho pipeline, trong trường hợp này là push lên nhánh develop
+# Xác định sự kiện cho pipeline
 on:
   push:
     branches:
       - main
     
 
-# Định nghĩa các jobs cần thực hiện 
+# Định nghĩa jobs cần thực hiện
 jobs:
-  # Job 1: build và test
+  # Job 1: build
   build:
     runs-on: ubuntu-latest
 

@@ -28,7 +28,6 @@ COPY --from=build /package*.json ./
 COPY --from=build /node_modules ./node_modules
 # COPY --from=build / .
 COPY --from=build /src ./src
-# Nếu server.js nằm trong thư mục build, sao chép thư mục build
 COPY --from=build /server.js ./server.js
 
 EXPOSE 3000
