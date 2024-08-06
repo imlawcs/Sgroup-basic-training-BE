@@ -29,6 +29,10 @@ const login = async (req, res) => {
     }
 }
 
+const Hello = async(req, res) => {
+    res.status(200).send("Hello world");
+}
+
 const getAllUsers = async (req, res) => {
     try {
         const users = await userServices.getAllUsers();
@@ -138,5 +142,6 @@ module.exports = {
     getMail,
     sendMail,
     forgotPassword,
-    resetPassword
+    resetPassword,
+    Hello
 }

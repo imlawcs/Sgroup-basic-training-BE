@@ -4,6 +4,7 @@ const userControllers = require('../controllers/user.controller.js');
 const authenticateToken = require('../middlewares/auth.middleware');
 
 router.post("/register", userControllers.register);
+router.get("/hello", userControllers.Hello);
 router.post("/login", userControllers.login);
 router.get("/users", userControllers.getAllUsers);
 router.post("/email", userControllers.getMail);
