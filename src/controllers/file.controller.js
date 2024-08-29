@@ -19,8 +19,12 @@ var storage = multer.diskStorage({
     }
 });
 
+// Cấu hình Multer để xử lý việc lưu trữ và đặt tên cho các tệp upload.
 var upload = multer({ storage: storage });
 
+// Middleware sử dụng cấu hình của Multer để xử lý việc upload một tệp từ trường 'myFile' trong yêu cầu HTTP.
+// Nhận tệp từ yêu cầu (request) gửi lên từ client và xử lý việc lưu trữ tệp theo cấu hình đã chỉ định.
+//Lưu tệp vào thư mục được cấu hình và đặt tên cho tệp như đã định nghĩa
 const uploadFile = upload.single('myFile');
 
 const check = async(req, res, next) => {

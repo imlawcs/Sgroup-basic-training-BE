@@ -2,16 +2,15 @@ version: '3.8'
 
 services:
   app:
-    # image: hanhnguyen312/be-crud-vote-users
-    image: hanhnguyen312/reactjs-basic
-    container_name: reactjs-container
+    image: hanhnguyen312/be-crud-vote-users
+    container_name: nodejs-container
     ports:
       - "3000:3000"
     env_file:
       - .env
-    command: node --max_old_space_size=2048 server.js
     depends_on:
       - db
+    # db chay truoc 
     networks:
       - my-network
 
